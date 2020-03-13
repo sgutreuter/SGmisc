@@ -1,0 +1,14 @@
+Package: SGmisc
+Title: Miscellaneous Convenience Functions
+Version: 0.1
+Date: 2020-03-13
+Authors@R:
+    person(given = "Steve",
+           family = "Gutreuter",
+           role = c("aut", "cre"),
+           email = "sgutreuter@gmail.com")
+Description: Miscellaneous convenience functions and wrappers.
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1

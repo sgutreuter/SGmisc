@@ -1,0 +1,12 @@
+.Rhistory
+*.pdf
+*.log
+*.Rout
+.#*
+tmp*
+obsolete
+genData.R
+testing.R
+sandbox.R
+builder.R
+.Rdata
