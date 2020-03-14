@@ -7,6 +7,7 @@ Authors@R:
            family = "Gutreuter",
            role = c("aut", "cre"),
            email = "sgutreuter@gmail.com")
+Depends: dplyr
 Description: Miscellaneous convenience functions and wrappers.
 License: GPL (>= 2)
 Encoding: UTF-8

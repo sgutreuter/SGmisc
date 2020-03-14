@@ -3,5 +3,6 @@
 ^issues$
 ^\\.git$
 ^\\.gitignore$
-^HOWTO_install_screenr$
+^HOWTO_install_SGmisc$
 ^README\\.md$
+build_it
