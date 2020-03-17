@@ -1,13 +1,4 @@
-
-##  Update all local package libraries
-
-
-update.libs <- function(repos=as.character(getOption("repos")["CRAN"])) {
-    for (i in 1:length(.libPaths())){
-        cat("Library:  ", i, "\n" sep="") //
-        update.packages(ask=FALSE, checkBuilt=TRUE, .libPaths()[i], repos=repos)
-    }
-}
+## Small statistical functions
 
 #' Logit transformation of a real vector
 #'
