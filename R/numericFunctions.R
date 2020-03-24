@@ -6,6 +6,8 @@
 #'
 #' @return A numeric vector containing logit(x)
 #'
+#' @author Steve Gutreuter
+#'
 #' @export
 logit <- function(x){
          return(log(x/(1-x))) }
@@ -15,6 +17,8 @@ logit <- function(x){
 #' @param x A numeric vector
 #'
 #' @return A numeric vector of the inverse logits of x.
+#'
+#' @author Steve Gutreuter
 #'
 #' @keywords expit
 #' @export
@@ -26,9 +30,12 @@ ilogit <- function (x) {1 / (1 + exp(-x))}
 #' @param knots Number of breaks in the abscissa
 #'
 #' @return A numeric vector
+#'
+#' @author Steve Gutreuter
+#' @importFrom graphics hist
 #' @export
 empCDF <- function (x, knots=10) {
-    x.hist <- hist(x, plot=FALSE, breaks=knots)
+    x.hist <- graphics::hist(x, plot=FALSE, breaks=knots)
     empCDF <- data.frame(x.hist$mids,
     (cumsum(x.hist$counts)/sum(x.hist$counts)))
     names(empCDF) <- c("abscissa", "CDF")
@@ -41,16 +48,18 @@ empCDF <- function (x, knots=10) {
 #' @param p A vector of anticipated proportions
 #' @param Deff The anticipated design effect
 #' @param RSE The desired relative standard error of estimation
-#' @param R1
-#' @param R2
+#' @param R1 Household response fraction
+#' @param R2 Individual response fraction
 #' @param eligibles The anticipated average number of eligible respondents per
 #' household
 #'
 #' @return A numeric vector of estimated sample sizes
 #'
+#' @author Steve Gutreuter
+#'
 #' @seealso \url{https://dhsprogram.com/publications/publication-dhsg1-dhs-questionnaires-and-manuals.cfm}
 #' @export
-sampsize.DHS <- function(p = 0.5, Deff = 2.0, RSE = 1, R1 = 1, R2 = 1,
+sampsize_DHS <- function(p = 0.5, Deff = 2.0, RSE = 1, R1 = 1, R2 = 1,
                          eligibles = 1){
     n <-  (Deff^2) * ((1/p) - 1)/RSE / R1*R2*eligibles
     ans <- list(estimated_proportion = p, design_effect = Deff,

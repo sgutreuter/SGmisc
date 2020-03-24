@@ -5,18 +5,12 @@
 ##
 ##    DESCRIPTION: Misc. functions for data manipulation and exploratory data
 ##                 analysis
-##
-##     WRITTEN BY: Steve Gutreuter
-##                 E-mail:  sgutreuter@gmail.gov
-##
-##           DATE: 201_-__-__
-##
 #################################################################################
 
 #' Recode a variable conditional on one or more other variables
 #'
 #' @param .x A vector to modify
-#' @param condition
+#' @param .condition An expression of a condition
 #' @param ... Replacement (see dplyr::recode)
 #'
 #' @return Contents of "Value"
@@ -30,10 +24,10 @@
 #'
 #' @keywords recode
 #'
-#' @importFrom dplyr
+#' @importFrom dplyr if_else recode
 #' @export
-recode_if <- function(.x, condition, ...){
-    if_else(condition, dplyr::recode(.x, ...), .x)
+recode_if <- function(.x, .condition, ...){
+    dplyr::if_else(.condition, dplyr::recode(.x, ...), .x)
 }
 
 
@@ -62,12 +56,4 @@ count_NA <- function(.data){
     x_
 }
 
-tst <- tibble(w = c(1, 3, 5, NA, 7, NaN, Inf),
-              x = 5 + rnorm(7),
-              y = c(Inf, 2 + rnorm(6)),
-              z = c(rep(NA, 3), 3 + rnorm(4)))
-count_NA(tst)
-tst2 <- tst
-class(tst2) <- "toad"
-count_NA(tst2)
 #################################  End of File  #################################

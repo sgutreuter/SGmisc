@@ -1,17 +1,32 @@
-## Small functions for dates
+#################################################################################
+##      R PROGRAM: dateFunctions.R
+##
+##        PROJECT: SGmisc
+##
+##    DESCRIPTION: Small functions for dates
+##
+#################################################################################
 
 #' Compute the midpoint between two dates
 #'
-#' @param startdate A vector of class \code{Date} containing the beginning date(s)
+#' @param startdate A vector of class \code{Date} containing the beginning
+#' date(s)
 #' @param enddate A vector of class \code{Date} containing the ending date(s)
 #'
 #'
 #' @return A vector of class Date containing the midpoint date(s) between
 #' \code{begindate} and \code{enddate}
 #'
+#' @author Steve Gutreuter
+#'
 #' @seealso \code{link(lubridate::interval)}
 #'
-#' @importFrom lubridate
+#' @examples
+#' begin <- ymd("2020-06-21", "2021-06-21")
+#' end <- ymd("2020-12-21", "2021-12-21")
+#' mid_date(begin, end)
+#'
+#' @importFrom lubridate interval as_date int_start int_end
 #' @export
 mid_date <- function(startdate, enddate){
     stopifnot(class(startdate) == "Date" & class(enddate) == "Date")
@@ -20,34 +35,43 @@ mid_date <- function(startdate, enddate){
             ((lubridate::int_end(intobj) - lubridate::int_start(intobj)) / 2))
 }
 
-debugonce(mid_date)
-wtf <- mid_date(DF$debutdate[1], DF$today[1])
-
-as.Date(as.integer(int_start(intobj)), origin = "1970-01-01")
-as.Date(as.integer(int_start(intobj)), origin = 0)
-
-sample(x = seq(from = DF$debutdate[1], to = DF$today[1],
-                                        by = "day"),
-                                size = 1)
-
-
 
 #' Compute uniformly distributed random date(s) between two dates
 #'
 #' @param startdate A vector of class \code{Date} containing the beginning
 #' date(s)
-#'
 #' @param enddate A vector of class \code{Date} containing the ending date(s)
+#' @param size An integer vector of the number of random dates
+#' @param simplify (Logical) controlling whether the resulting list is
+#' simplfied to a vector or matrix
 #'
-#' @return A vector of class \code{Date} containing uniformly distribute dates in
-#' the closed interval (\code{begindate}, \code{enddate}).
+#' @return A list or vector of elements of class \code{Date} containing uniformly
+#' distributed dates in the closed interval (\code{begindate}, \code{enddate}).
+#'
+#' @author Steve Gutreuter
 #'
 #' @seealso \code{link(lubridate::interval)}
 #'
-#' @importFrom lubridate
+#' @examples
+#' begin <- ymd("2020-06-21", "2021-06-21")
+#' end <- ymd("2020-12-21", "2021-12-21")
+#' rand_date(begin, end, size = 5)
+#'
+#' rand_date(begin, end, simplify = TRUE)
+#'
 #' @export
-rand_date <- function(startdate, enddate, size = 1){
+rand_date <- function(startdate, enddate, size = 1, simplify = FALSE){
     stopifnot(class(startdate) == "Date" & class(enddate) == "Date")
-    sample(x = seq(from = startdate, to = enddate, by = "day"),
-           size = size)
+    M <- length(startdate)
+    stopifnot(M == length(enddate))
+    res <- rep(list(rep(as.Date(NA), size)), M)
+    for(i in 1:M){
+        res[i] <- list(sample(x = seq.Date(from = startdate[i],
+                                      to = enddate[i], by = "day"),
+                         size = size))
+    }
+    if(simplify & size == 1) {
+        res <- do.call("c", res)
+    }
+    res
 }
