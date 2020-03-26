@@ -14,6 +14,6 @@ HOWTO Install SGmisc from GitHub
 
     devtools::install_github("sgutreuter/SGmisc")
 
-5.  Attach screenr and proceed:
+5.  Attach SGmisc and proceed:
 
     library(SGmisc)

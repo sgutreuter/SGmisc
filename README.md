@@ -1,2 +1,2 @@
 # SGmisc
-Miscellaneous small convenience functions and wrappers
+Miscellaneous small R convenience functions and wrappers
