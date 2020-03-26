@@ -1,0 +1,19 @@
+HOWTO Install SGmisc from GitHub
+--------------------------------
+
+1.  Start an R session.
+2.  Install package devtools, if not already installed:
+
+    install.packages("devtools")
+
+3.  Attach devtools:
+
+    library(devtools)
+
+4. Install SGmisc from GitHub::
+
+    devtools::install_github("sgutreuter/SGmisc")
+
+5.  Attach screenr and proceed:
+
+    library(SGmisc)

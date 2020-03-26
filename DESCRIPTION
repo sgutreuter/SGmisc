@@ -1,5 +1,5 @@
 Package: SGmisc
-Title: Miscellaneous Convenience Functions
+Title: Miscellaneous R Convenience Functions
 Version: 0.1
 Date: 2020-03-13
 Authors@R:
@@ -8,7 +8,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "sgutreuter@gmail.com")
 Depends: dplyr, lubridate
-Description: Miscellaneous convenience functions and wrappers.
+Description: Miscellaneous R convenience functions and wrappers.
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
