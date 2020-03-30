@@ -8,13 +8,13 @@
 #' @seealso
 #' The exported functions in the \code{SGmisc} package are:
 #' \describe{
-#' \item{\code{link{countNA}}}{Get a count of the numbers of NA, NaN and Inf for each column of a dataframe}
-#' \item{\code{link{empCDF}}}{Compute the empirical cumulative distribution function for a discrete random vector}
-#' \item{\code{link{ilogit}}}{Compute the inverse of the logit transformation ("expit" function)}
-#' \item{\code{link{logit}}}{Compute the logit transformation of a vector of elements in (0, 1)}
-#' \item{\code{link{mid_date}}}{Find the midpoint date between two dates}
-#' \item{\code{link{rand_date}}}{Compute a random uniformly distributed date between two dates}
-#' \item{\code{link{recode_if}}}{Conditional recoding of elements of a vector}
-#' \item{\code{link{sampsize_DHS}}}{Compute a sample-size requirement from for a Demographic and Health Survey}
+#' \item{\code{\link{count_NA}}}{Get a count of the numbers of NA, NaN and Inf for each column of a dataframe}
+#' \item{\code{\link{empCDF}}}{Compute the empirical cumulative distribution function for a discrete random vector}
+#' \item{\code{\link{ilogit}}}{Compute the inverse of the logit transformation ("expit" function)}
+#' \item{\code{\link{logit}}}{Compute the logit transformation of a vector of elements in (0, 1)}
+#' \item{\code{\link{mid_date}}}{Find the midpoint date between two dates}
+#' \item{\code{\link{rand_date}}}{Compute a random uniformly distributed date between two dates}
+#' \item{\code{\link{recode_if}}}{Conditional recoding of elements of a vector}
+#' \item{\code{\link{sampsize_DHS}}}{Compute a sample-size requirement from for a Demographic and Health Survey}
 #'}
 NULL
