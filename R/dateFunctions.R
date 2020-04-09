@@ -19,7 +19,7 @@
 #'
 #' @author Steve Gutreuter
 #'
-#' @seealso \code{\link{lubridate::interval}}
+#' @seealso \code{\link[lubridate]{interval}}
 #'
 #' @examples
 #' begin <- ymd("2020-06-21", "2021-06-21")
@@ -54,7 +54,6 @@ mid_date <- function(startdate, enddate){
 #' @param startdate A vector of class \code{Date} containing the beginning
 #' date(s)
 #' @param enddate A vector of class \code{Date} containing the ending date(s)
-#' @param size An integer vector of the number of random dates
 #' @param ... Additional arguments passed to \code{base::sample}
 #'
 #' @return A  vector of elements of class \code{Date} containing uniformly
@@ -62,14 +61,12 @@ mid_date <- function(startdate, enddate){
 #'
 #' @author Steve Gutreuter
 #'
-#' @seealso \code{\link{base::sample}} \code{\link{base::seq.Date}}
+#' @seealso \code{\link[base]{sample}} \code{\link[base]{seq.Date}}
 #'
 #' @examples
 #' begin <- ymd("2020-06-21", "2021-06-21")
 #' end <- ymd("2020-12-21", "2021-12-21")
-#' rand_date(begin, end, size = 5)
-#'
-#' rand_date(begin, end, simplify = TRUE)
+#' rand_date(begin, end)
 #'
 #' @export
 rand_date <- function(startdate, enddate, ...){

@@ -13,7 +13,7 @@ date(s)}
 \item{enddate}{A vector of class \code{Date} containing the ending date(s)}
 }
 \value{
-A vector of class Date containing the midpoint date(s) between
+A vector of class \code{Date} containing the midpoint date(s) between
 \code{begindate} and \code{enddate}
 }
 \description{
@@ -26,7 +26,7 @@ mid_date(begin, end)
 
 }
 \seealso{
-\code{link(lubridate::interval)}
+\code{\link[lubridate]{interval}}
 }
 \author{
 Steve Gutreuter

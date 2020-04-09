@@ -2,9 +2,9 @@
 % Please edit documentation in R/dateFunctions.R
 \name{rand_date}
 \alias{rand_date}
-\title{Compute uniformly distributed random date(s) between two dates}
+\title{Compute uniformly distributed random dates within intervals of dates}
 \usage{
-rand_date(startdate, enddate, size = 1, simplify = FALSE)
+rand_date(startdate, enddate, ...)
 }
 \arguments{
 \item{startdate}{A vector of class \code{Date} containing the beginning
@@ -12,28 +12,23 @@ date(s)}
 
 \item{enddate}{A vector of class \code{Date} containing the ending date(s)}
 
-\item{size}{An integer vector of the number of random dates}
-
-\item{simplify}{(Logical) controlling whether the resulting list is
-simplfied to a vector or matrix}
+\item{...}{Additional arguments passed to \code{base::sample}}
 }
 \value{
-A list or vector of elements of class \code{Date} containing uniformly
+A  vector of elements of class \code{Date} containing uniformly
 distributed dates in the closed interval (\code{begindate}, \code{enddate}).
 }
 \description{
-Compute uniformly distributed random date(s) between two dates
+Compute uniformly distributed random dates within intervals of dates
 }
 \examples{
 begin <- ymd("2020-06-21", "2021-06-21")
 end <- ymd("2020-12-21", "2021-12-21")
-rand_date(begin, end, size = 5)
-
-rand_date(begin, end, simplify = TRUE)
+rand_date(begin, end)
 
 }
 \seealso{
-\code{link(lubridate::interval)}
+\code{\link[base]{sample}} \code{\link[base]{seq.Date}}
 }
 \author{
 Steve Gutreuter
