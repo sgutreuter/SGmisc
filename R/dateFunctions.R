@@ -14,12 +14,12 @@
 #' @param enddate A vector of class \code{Date} containing the ending date(s)
 #'
 #'
-#' @return A vector of class Date containing the midpoint date(s) between
+#' @return A vector of class \code{Date} containing the midpoint date(s) between
 #' \code{begindate} and \code{enddate}
 #'
 #' @author Steve Gutreuter
 #'
-#' @seealso \code{link(lubridate::interval)}
+#' @seealso \code{\link{lubridate::interval}}
 #'
 #' @examples
 #' begin <- ymd("2020-06-21", "2021-06-21")
@@ -30,27 +30,39 @@
 #' @export
 mid_date <- function(startdate, enddate){
     stopifnot(class(startdate) == "Date" & class(enddate) == "Date")
-    intobj <- lubridate::interval(startdate, enddate)
-    lubridate::as_date(lubridate::int_start(intobj) +
-            ((lubridate::int_end(intobj) - lubridate::int_start(intobj)) / 2))
+    stopifnot(length(startdate) == length(enddate))
+    idx <- enddate < startdate
+    if(any(idx, na.rm = TRUE)){
+        enddate[idx] <- NULL
+        startdate[idx] <- NULL
+        cat(paste0("\nWARNING: NAs assigned to ", sum(idx, na.rm = TRUE),
+                   " inconsistent date pairs\n"))
+    }
+    res <- NULL
+    if(length(startdate > 0)){
+        intobj <- lubridate::interval(startdate, enddate)
+        res <- lubridate::as_date(lubridate::int_start(intobj) +
+                                  ((lubridate::int_end(intobj) -
+                                    lubridate::int_start(intobj)) / 2))
+    }
+    res
 }
 
 
-#' Compute uniformly distributed random date(s) between two dates
+#' Compute uniformly distributed random dates within intervals of dates
 #'
 #' @param startdate A vector of class \code{Date} containing the beginning
 #' date(s)
 #' @param enddate A vector of class \code{Date} containing the ending date(s)
 #' @param size An integer vector of the number of random dates
-#' @param simplify (Logical) controlling whether the resulting list is
-#' simplfied to a vector or matrix
+#' @param ... Additional arguments passed to \code{base::sample}
 #'
-#' @return A list or vector of elements of class \code{Date} containing uniformly
+#' @return A  vector of elements of class \code{Date} containing uniformly
 #' distributed dates in the closed interval (\code{begindate}, \code{enddate}).
 #'
 #' @author Steve Gutreuter
 #'
-#' @seealso \code{link(lubridate::interval)}
+#' @seealso \code{\link{base::sample}} \code{\link{base::seq.Date}}
 #'
 #' @examples
 #' begin <- ymd("2020-06-21", "2021-06-21")
@@ -60,18 +72,30 @@ mid_date <- function(startdate, enddate){
 #' rand_date(begin, end, simplify = TRUE)
 #'
 #' @export
-rand_date <- function(startdate, enddate, size = 1, simplify = FALSE){
+rand_date <- function(startdate, enddate, ...){
     stopifnot(class(startdate) == "Date" & class(enddate) == "Date")
-    M <- length(startdate)
-    stopifnot(M == length(enddate))
-    res <- rep(list(rep(as.Date(NA), size)), M)
-    for(i in 1:M){
-        res[i] <- list(sample(x = seq.Date(from = startdate[i],
-                                      to = enddate[i], by = "day"),
-                         size = size))
+    stopifnot(length(startdate) == length(enddate))
+    idx <- enddate < startdate
+    if(any(idx, na.rm = TRUE)){
+        enddate[idx] <- NA
+        startdate[idx] <- NA
+        cat(paste0("\nWARNING: NAs assigned to ", sum(idx, na.rm = TRUE),
+                   " inconsistent date pairs\n"))
     }
-    if(simplify & size == 1) {
-        res <- do.call("c", res)
+    M <- length(startdate)
+    res <- NULL
+    if(M > 0){
+        res <- rep(as.Date(NA), M)
+        for(i in 1:M){
+            if(!(is.na(startdate[i]) | is.na(enddate[i]))){
+                res[i] <- base::sample(x = seq.Date(from = startdate[i],
+                                                         to = enddate[i],
+                                                    by = "day"),
+                                       size = 1)
+            } else {
+                res[i]  <- NA
+            }
+        }
     }
     res
 }
