@@ -7,7 +7,7 @@ Authors@R:
            family = "Gutreuter",
            role = c("aut", "cre"),
            email = "sgutreuter@gmail.com")
-Depends: dplyr, lubridate
+Depends: dplyr, lubridate, magrittr, boot
 Description: Miscellaneous R convenience functions and wrappers.
 License: GPL (>= 2)
 URL: https://github.com/sgutreuter/SGmisc.git

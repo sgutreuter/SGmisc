@@ -2,34 +2,45 @@
 % Please edit documentation in R/numericFunctions.R
 \name{sampsize_DHS}
 \alias{sampsize_DHS}
-\title{Compute the stratum-specific sample size for a proportion estimated from a
-Demographic and Health Survey}
+\title{Compute the stratum-specific household sample size for a proportion estimated
+from a Demographic and Health Survey}
 \usage{
-sampsize_DHS(p = 0.5, Deff = 2, RSE = 1, R1 = 1, R2 = 1, eligibles = 1)
+sampsize_DHS(
+  p = NULL,
+  Deff = NULL,
+  RSE = NULL,
+  R1 = NULL,
+  R2 = NULL,
+  eligibles = NULL
+)
 }
 \arguments{
-\item{p}{A vector of anticipated proportions}
+\item{p}{A vector of anticipated proportions.}
 
-\item{Deff}{The anticipated design effect}
+\item{Deff}{The anticipated conventional design effect (square of the Kish
+design effect, Deft).  Hint: Deff = 2.0 is a tired assumption; try do to better.}
 
-\item{RSE}{The desired relative standard error of estimation}
+\item{RSE}{The desired relative standard error of estimation expressed as a proportion.}
 
-\item{R1}{Household response fraction}
+\item{R1}{Expected proportion of households that participate.}
 
-\item{R2}{Individual response fraction}
+\item{R2}{Expected proportion of eligible household members who participate.}
 
 \item{eligibles}{The anticipated average number of eligible respondents per
-household}
+household.}
 }
 \value{
-A numeric vector of estimated sample sizes
+A list containing a vector of estimated required sample sizes (numbers
+of households) and the function call.
 }
 \description{
-Compute the stratum-specific sample size for a proportion estimated from a
-Demographic and Health Survey
+Compute the stratum-specific household sample size for a proportion estimated
+from a Demographic and Health Survey
 }
-\seealso{
-\url{https://dhsprogram.com/publications/publication-dhsg1-dhs-questionnaires-and-manuals.cfm}
+\references{
+ICF International.  Demographic and Health Survey Sampling and Household
+Listing Manual.  MEASURE DHS, Calverton, Maryland. 2012.
+\url{https://dhsprogram.com/pubs/pdf/DHSM4/DHS6_Sampling_Manual_Sept2012_DHSM4.pdf}
 }
 \author{
 Steve Gutreuter

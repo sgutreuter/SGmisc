@@ -1,11 +1,14 @@
 #################################################################################
-##      R PROGRAM: dateFunctions.R
+##     R SCRIPT: dateFunctions.R
 ##
-##        PROJECT: SGmisc
+##      PACKAGE: SGmisc
 ##
-##    DESCRIPTION: Small functions for dates
+##  DESCRIPTION: Miscellaneous small functions for dates
 ##
+##   WRITTEN BY: Steve Gutreuter
+##               E-mail:  sgutreuter@gmail.com
 #################################################################################
+
 
 #' Compute the midpoint between two dates
 #'
@@ -96,3 +99,4 @@ rand_date <- function(startdate, enddate, ...){
     }
     res
 }
+################################   END of FILE   ################################

@@ -1,10 +1,13 @@
 #################################################################################
-##      R PROGRAM: dataFunctions.R
+##     R SCRIPT: dataFunctions.R
 ##
-##        PROJECT: SGmisc
+##      PACKAGE: SGmisc
 ##
-##    DESCRIPTION: Misc. functions for data manipulation and exploratory data
-##                 analysis
+##  DESCRIPTION: Misc. functions for data manipulation and exploratory data
+##               analysis
+##
+##   WRITTEN BY: Steve Gutreuter
+##               E-mail:  sgutreuter@gmail.com
 #################################################################################
 
 #' Recode a variable conditional on one or more other variables
