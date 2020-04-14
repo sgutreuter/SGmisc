@@ -99,7 +99,7 @@ empCDF <- function (x, knots = 10) {
 #' \item{\verb{Call}}{The function call.}
 #' }
 #'
-#' @author Steve Gutreuter, \email{sgutreuter@@cdc.com}
+#' @author Steve Gutreuter
 #'
 #' @references
 #' Osmond DH, Page K, Wiley J, Garrett K, Sheppard HW, Moss AR, Schrager L,

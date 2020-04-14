@@ -89,5 +89,5 @@ Cambridge University Press; 1997.
 \code{\link{boot}} \code{link{boot.ci}}
 }
 \author{
-Steve Gutreuter, \email{sgutreuter@cdc.com}
+Steve Gutreuter
 }
