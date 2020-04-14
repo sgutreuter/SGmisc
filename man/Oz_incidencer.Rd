@@ -50,7 +50,7 @@ replications.}
 \item{reps}{Integer number of bootstrap replicates.}
 
 \item{ci.type}{Bootstrap confidence interval type; any subset of
-\code{c{"norm","basic", "stud", "perc", "bca"}}, or \code{"all"}.  The default
+\code{c("norm","basic", "stud", "perc", "bca")}, or \code{"all"}.  The default
 is \verb{"bca"}, which may require large numbers of bootstrap replicates.}
 
 \item{conf}{Numeric confidence level for bootstrap intervals.}
@@ -86,7 +86,7 @@ Davison AC, Hinkley DV.  Bootstrap Methods and Their Application, Chapter 5.
 Cambridge University Press; 1997.
 }
 \seealso{
-\code{\link{boot}}
+\code{\link{boot}} \code{link{boot.ci}}
 }
 \author{
 Steve Gutreuter, \email{sgutreuter@cdc.com}
