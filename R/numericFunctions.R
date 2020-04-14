@@ -85,7 +85,7 @@ empCDF <- function (x, knots = 10) {
 #' @param sweight (Optional) Numeric survey sampling weights.
 #' @param reps Integer number of bootstrap replicates.
 #' @param ci.type Bootstrap confidence interval type; any subset of
-#' \code{c{"norm","basic", "stud", "perc", "bca"}}, or \code{"all"}.  The default
+#' \code{c("norm","basic", "stud", "perc", "bca")}, or \code{"all"}.  The default
 #' is \verb{"bca"}, which may require large numbers of bootstrap replicates.
 #' @param conf Numeric confidence level for bootstrap intervals.
 #' @param ... Additional arguments passed to \code{boot} or \code{boot.ci}
@@ -110,7 +110,7 @@ empCDF <- function (x, knots = 10) {
 #' Davison AC, Hinkley DV.  Bootstrap Methods and Their Application, Chapter 5.
 #' Cambridge University Press; 1997.
 #'
-#' @seealso \code{\link{boot}}
+#' @seealso \code{\link{boot}} \code{link{boot.ci}}
 #' @importFrom dplyr mutate select if_else
 #' @importFrom magrittr `%>%`
 #' @importFrom boot boot boot.ci

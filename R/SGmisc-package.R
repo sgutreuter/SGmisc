@@ -13,6 +13,7 @@
 #' \item{\code{\link{ilogit}}}{Compute the inverse of the logit transformation ("expit" function)}
 #' \item{\code{\link{logit}}}{Compute the logit transformation of a vector of elements in (0, 1)}
 #' \item{\code{\link{mid_date}}}{Find the midpoint date between two dates}
+#' \item{\code{link{Oz_incidencer}}}{Compute HIV incidence rate using "Osmond's" method}
 #' \item{\code{\link{rand_date}}}{Compute a random uniformly distributed date between two dates}
 #' \item{\code{\link{recode_if}}}{Conditional recoding of elements of a vector}
 #' \item{\code{\link{sampsize_DHS}}}{Compute a sample-size requirement from for a Demographic and Health Survey}
