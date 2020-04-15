@@ -12,7 +12,7 @@ empCDF(x, knots = 10)
 \item{knots}{Number of breaks in the abscissa}
 }
 \value{
-A numeric vector
+A numeric vector containing the discrete empirical CDF
 }
 \description{
 Compute the discrete empirical cumulative distribution of a real vector

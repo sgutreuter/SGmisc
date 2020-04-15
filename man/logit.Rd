@@ -7,7 +7,7 @@
 logit(x)
 }
 \arguments{
-\item{x}{A real-valued vector with elements in (0,1)}
+\item{x}{A real-valued vector with elements in [0,1]}
 }
 \value{
 A numeric vector containing logit(x)

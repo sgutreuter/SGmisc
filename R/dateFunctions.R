@@ -1,4 +1,4 @@
-#################################################################################
+################################################################################
 ##     R SCRIPT: dateFunctions.R
 ##
 ##      PACKAGE: SGmisc
@@ -7,8 +7,7 @@
 ##
 ##   WRITTEN BY: Steve Gutreuter
 ##               E-mail:  sgutreuter@gmail.com
-#################################################################################
-
+################################################################################
 
 #' Compute the midpoint between two dates
 #'
@@ -31,18 +30,18 @@
 #'
 #' @importFrom lubridate interval as_date int_start int_end
 #' @export
-mid_date <- function(startdate, enddate){
+mid_date <- function(startdate, enddate) {
     stopifnot(class(startdate) == "Date" & class(enddate) == "Date")
     stopifnot(length(startdate) == length(enddate))
     idx <- enddate < startdate
-    if(any(idx, na.rm = TRUE)){
+    if (any(idx, na.rm = TRUE)) {
         enddate[idx] <- NULL
         startdate[idx] <- NULL
         cat(paste0("\nWARNING: NAs assigned to ", sum(idx, na.rm = TRUE),
                    " inconsistent date pairs\n"))
     }
     res <- NULL
-    if(length(startdate > 0)){
+    if (length(startdate > 0)) {
         intobj <- lubridate::interval(startdate, enddate)
         res <- lubridate::as_date(lubridate::int_start(intobj) +
                                   ((lubridate::int_end(intobj) -
@@ -72,11 +71,11 @@ mid_date <- function(startdate, enddate){
 #' rand_date(begin, end)
 #'
 #' @export
-rand_date <- function(startdate, enddate, ...){
+rand_date <- function(startdate, enddate, ...) {
     stopifnot(class(startdate) == "Date" & class(enddate) == "Date")
     stopifnot(length(startdate) == length(enddate))
     idx <- enddate < startdate
-    if(any(idx, na.rm = TRUE)){
+    if (any(idx, na.rm = TRUE)) {
         enddate[idx] <- NA
         startdate[idx] <- NA
         cat(paste0("\nWARNING: NAs assigned to ", sum(idx, na.rm = TRUE),
@@ -84,10 +83,10 @@ rand_date <- function(startdate, enddate, ...){
     }
     M <- length(startdate)
     res <- NULL
-    if(M > 0){
+    if (M > 0) {
         res <- rep(as.Date(NA), M)
-        for(i in 1:M){
-            if(!(is.na(startdate[i]) | is.na(enddate[i]))){
+        for (i in 1:M) {
+            if (!(is.na(startdate[i]) | is.na(enddate[i]))) {
                 res[i] <- base::sample(x = seq.Date(from = startdate[i],
                                                          to = enddate[i],
                                                     by = "day"),
@@ -99,4 +98,4 @@ rand_date <- function(startdate, enddate, ...){
     }
     res
 }
-################################   END of FILE   ################################
+################################   END of FILE   ###############################

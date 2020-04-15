@@ -29,20 +29,20 @@ infection status indicator.}
 \item{left}{Character-valued name of the (class = \verb{"Date"}) variable for
 the earliest possble date of infection.}
 
-\item{right}{Character-valued name of the (class = \verb{"Date"}) variable for
-the latest possible date of infection.}
+\item{right}{Character-valued name of the (class = \verb{"Date"}) variable
+for the latest possible date of infection.}
 
-\item{surveyDate}{Character-valued name of the (class = \verb{"Date"}) variable
-containing the interview dates.}
+\item{surveyDate}{Character-valued name of the (class = \verb{"Date"})
+variable containing the interview dates.}
 
-\item{debutDate}{Character-valued name of the (class = \verb{"Date"}) variable
-containing the self-reported dates of sexual debut.}
+\item{debutDate}{Character-valued name of the (class = \verb{"Date"})
+variable containing the self-reported dates of sexual debut.}
 
 \item{sweight}{(Optional) Numeric survey sampling weights.}
 
 \item{imputer}{Character; either \verb{"random"} (the default) or
-\verb{"midpoint"} which specifies how the date of infection is imputed.  With
-argument \code{imputer = "random"}, an independently and identically
+\verb{"midpoint"} which specifies how the date of infection is imputed.
+With argument \code{imputer = "random"}, an independently and identically
 uniformly distributed date of infection is imputed for each
 bootstrap replication.  This is slow for reasonable numbers of bootstrap
 replications.}
@@ -50,8 +50,9 @@ replications.}
 \item{reps}{Integer number of bootstrap replicates.}
 
 \item{ci.type}{Bootstrap confidence interval type; any subset of
-\code{c("norm","basic", "stud", "perc", "bca")}, or \code{"all"}.  The default
-is \verb{"bca"}, which may require large numbers of bootstrap replicates.}
+\code{c("norm","basic", "stud", "perc", "bca")}, or \code{"all"}.  The
+default is \verb{"bca"}, which may require large numbers of bootstrap
+replicates.}
 
 \item{conf}{Numeric confidence level for bootstrap intervals.}
 
@@ -86,7 +87,7 @@ Davison AC, Hinkley DV.  Bootstrap Methods and Their Application, Chapter 5.
 Cambridge University Press; 1997.
 }
 \seealso{
-\code{\link{boot}} \code{link{boot.ci}}
+\code{\link[boot]{boot}} \code{\link[boot]{boot.ci}}
 }
 \author{
 Steve Gutreuter

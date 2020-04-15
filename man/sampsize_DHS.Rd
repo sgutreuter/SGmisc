@@ -18,9 +18,11 @@ sampsize_DHS(
 \item{p}{A vector of anticipated proportions.}
 
 \item{Deff}{The anticipated conventional design effect (square of the Kish
-design effect, Deft).  Hint: Deff = 2.0 is a tired assumption; try do to better.}
+design effect, Deft).  Hint: Deff = 2.0 is a tired assumption; try do to
+better.}
 
-\item{RSE}{The desired relative standard error of estimation expressed as a proportion.}
+\item{RSE}{The desired relative standard error of estimation expressed as a
+proportion.}
 
 \item{R1}{Expected proportion of households that participate.}
 
@@ -30,8 +32,8 @@ design effect, Deft).  Hint: Deff = 2.0 is a tired assumption; try do to better.
 household.}
 }
 \value{
-A list containing a vector of estimated required sample sizes (numbers
-of households) and the function call.
+A list containing a vector of estimated required sample sizes
+(numbers of households) and the function call.
 }
 \description{
 Compute the stratum-specific household sample size for a proportion estimated
