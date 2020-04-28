@@ -106,6 +106,8 @@ ilogit <- function(x) 1 / (1 + exp(-x))
 #'
 #' @author Steve Gutreuter
 #'
+#' @seealso \code{\link[boot]{logit}} from the \code{boot} package for a C++
+#' alternative.
 #' @export
 logit <- function(x) {
     stopifnot(x >= 0 & x <= 1)
@@ -229,22 +231,23 @@ Oz_incidencer <- function(DF, x = NULL, left = NULL, right = NULL,
 }
 
 
-#' Compute the stratum-specific household sample size for a proportion estimated
-#' from a Demographic and Health Survey
+#' Compute the stratum-specific cluster/household sample size for proportions
+#' from binomial counts estimated from a Demographic and Health Survey
 #'
 #' @param p A vector of anticipated proportions.
 #' @param Deff The anticipated conventional design effect (square of the Kish
-#' design effect, Deft).  Hint: Deff = 2.0 is a tired assumption; try do to
-#' better.
+#' design effect, Deft).  Hint: Deff = 2.0 is an over-used assumption; try do
+#' to better.
 #' @param RSE The desired relative standard error of estimation expressed as a
 #' proportion.
-#' @param R1 Expected proportion of households that participate.
-#' @param R2 Expected proportion of eligible household members who participate.
+#' @param R1 Expected proportion of clusters (households) that participate.
+#' @param R2 Expected proportion of eligible clusters (household) members who
+#' participate.
 #' @param eligibles The anticipated average number of eligible respondents per
-#' household.
+#' cluster (household).
 #'
 #' @return A list containing a vector of estimated required sample sizes
-#' (numbers of households) and the function call.
+#' (numbers of clusters/households) and the function call.
 #'
 #' @author Steve Gutreuter
 #'

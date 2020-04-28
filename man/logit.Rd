@@ -15,6 +15,10 @@ A numeric vector containing logit(x)
 \description{
 Logit transformation of a real vector
 }
+\seealso{
+\code{\link[boot]{logit}} from the \code{boot} package for a C++
+alternative.
+}
 \author{
 Steve Gutreuter
 }
