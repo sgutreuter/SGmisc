@@ -295,6 +295,7 @@ sampsize_DHS <- function(p = NULL, Deff = NULL, RSE = NULL, R1 = NULL, R2 = NULL
 #' @references
 #' Thompson SK. Sample size for estimating multinomial proportions. The American
 #' Statistician 1987; 41(1):42-46.
+#' @importFrom stats qnorm
 #' @export
 sampsize_multinomial <- function(m, relmoe, conf = 0.95) {
     stopifnot(m > 1)
