@@ -17,7 +17,7 @@
 #'
 #'
 #' @return A vector of class \code{Date} containing the midpoint date(s) between
-#' \code{begindate} and \code{enddate}
+#' \code{startdate} and \code{enddate}
 #'
 #' @author Steve Gutreuter
 #'
@@ -59,7 +59,7 @@ mid_date <- function(startdate, enddate) {
 #' @param ... Additional arguments passed to \code{base::sample}
 #'
 #' @return A  vector of elements of class \code{Date} containing uniformly
-#' distributed dates in the closed interval (\code{begindate}, \code{enddate}).
+#' distributed dates in the closed interval (\code{startdate}, \code{enddate}).
 #'
 #' @author Steve Gutreuter
 #'

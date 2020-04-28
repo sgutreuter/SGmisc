@@ -14,7 +14,7 @@ date(s)}
 }
 \value{
 A vector of class \code{Date} containing the midpoint date(s) between
-\code{begindate} and \code{enddate}
+\code{startdate} and \code{enddate}
 }
 \description{
 Compute the midpoint between two dates

@@ -32,6 +32,8 @@ between two dates}
 \item{\code{\link{recode_if}}}{Conditional recoding of elements of a vector}
 \item{\code{\link{sampsize_DHS}}}{Compute a sample-size requirement from for
 a Demographic and Health Survey}
+\item{code{\link{sampsize_multinomial}}}{Compute the approximate worst-case
+sample-size for a vector of multinomially distributed proportions}
 }
 }
 \author{

@@ -16,7 +16,7 @@ date(s)}
 }
 \value{
 A  vector of elements of class \code{Date} containing uniformly
-distributed dates in the closed interval (\code{begindate}, \code{enddate}).
+distributed dates in the closed interval (\code{startdate}, \code{enddate}).
 }
 \description{
 Compute uniformly distributed random dates within intervals of dates

@@ -269,4 +269,43 @@ sampsize_DHS <- function(p = NULL, Deff = NULL, RSE = NULL, R1 = NULL, R2 = NULL
     fx <- list(households = ceiling(n), Call = match.call())
     fx
 }
+
+#' Compute the approximate worst-case sample size for a vector of multinomial
+#' proportions
+#'
+#' @param m The (integer) number of elements (at least two) in the vector of
+#' equal proportions.
+#' @param relmoe Relative margin of error (relative half-width of the confidence
+#' interval), expressed as a proportion.  A value of 0.25 specifies margin of
+#' error equal to 0.25 times the value of the (equal) proportions.
+#' @param conf Confidence level.  The default is 0.95.
+#'
+#' @return A list containing the following elements:
+#' \describe{
+#' \item{\verb{sample_size}}{The required sample size.}
+#' \item{\verb{target_proportions}}{The anticipated vector of multinomially
+#' distributed outcomes.}
+#' \item{\verb{moe}}{The absolute margins of error for estimation of
+#' \verb{target_proportions}.}
+#' \item{\verb{Call}}{The function call.}
+#' }
+#'
+#' @author Steve Gutreuter
+#'
+#' @references
+#' Thompson SK. Sample size for estimating multinomial proportions. The American
+#' Statistician 1987; 41(1):42-46.
+#' @export
+sampsize_multinomial <- function(m, relmoe, conf = 0.95) {
+    stopifnot(m > 1)
+    stopifnot(relmoe > 0 & relmoe <= 1)
+    p <- 1 / m
+    d <- relmoe * p
+    n <- qnorm(1 - (1 - conf) / 2)^2 * p * (1 - p) / d^2
+    list(sample_size = ceiling(n),
+         target_proportions = rep(p, m),
+         moe = rep(d, m),
+         Call = match.call())
+}
+
 ################################   END of FILE   ###############################
