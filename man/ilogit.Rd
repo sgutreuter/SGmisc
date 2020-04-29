@@ -2,9 +2,12 @@
 % Please edit documentation in R/numericFunctions.R
 \name{ilogit}
 \alias{ilogit}
+\alias{expit}
 \title{Inverse logit (expit) tranformation of a numeric vector}
 \usage{
 ilogit(x)
+
+expit(x)
 }
 \arguments{
 \item{x}{A numeric vector}

@@ -95,7 +95,14 @@ icc2deff <- function(icc, N) {
 #'
 #' @keywords expit
 #' @export
-ilogit <- function(x) 1 / (1 + exp(-x))
+ilogit <- function(x) {
+    stopifnot(is.numeric(x))
+    1 / (1 + exp(-x))
+}
+
+#' @rdname ilogit
+#' @export
+expit <- ilogit
 
 
 #' Logit transformation of a real vector
@@ -272,6 +279,7 @@ sampsize_DHS <- function(p = NULL, Deff = NULL, RSE = NULL, R1 = NULL, R2 = NULL
     fx <- list(households = ceiling(n), Call = match.call())
     fx
 }
+
 
 #' Compute the approximate worst-case sample size for a vector of multinomial
 #' proportions
