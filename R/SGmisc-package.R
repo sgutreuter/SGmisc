@@ -32,5 +32,7 @@
 #' a Demographic and Health Survey}
 #' \item{\code{\link{sampsize_multinomial}}}{Compute the approximate worst-case
 #' sample-size for a vector of multinomially distributed proportions}
+#' \item{\code{\link{smooth_extreme}}}{Compute a smooth differentiable
+#' approximation to the minimum or maximum of a numeric vector}
 #'}
 NULL
