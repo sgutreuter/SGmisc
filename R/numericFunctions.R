@@ -40,7 +40,7 @@ computeBetaParms <- function(mu, var) {
 #'
 #' @author Steve Gutreuter
 #' @export
-computeBetaMoments <- function(a = 1, b = 2) {
+computeBetaMoments <- function(a, b) {
     if (!(a > 0 & b > 0)) stop("a and b must be greater than 0")
     mean <- a / (a + b)
     var <- a * b / (((a + b)^2) * (a + b + 1))
@@ -99,7 +99,6 @@ ilogit <- function(x) {
     stopifnot(is.numeric(x))
     1 / (1 + exp(-x))
 }
-
 #' @rdname ilogit
 #' @export
 expit <- ilogit
