@@ -13,18 +13,18 @@
 #' Compute the shape parameters of the Beta distribution from the mean and
 #' variance
 #'
-#' @param mu Mean of the Beta distribution
+#' @param mean Mean of the Beta distribution
 #' @param var Variance of the Beta distribution
 #'
 #' @return A list containing the two shape parameters of the Beta distribution
 #'
 #' @author Steve Gutreuter
 #' @export
-computeBetaParms <- function(mu, var) {
-    if (!((mu < 1) | (mu > 0))) stop("mu must be in (0, 1)")
-    if (var >= mu * (1 - mu)) stop("var must be < mu * (1 - mu)")
-    a <- ((1 - mu) / var - 1 / mu) * mu ^ 2
-    b <- a * (1 / mu - 1)
+computeBetaParms <- function(mean, var) {
+    if (!((mean < 1) | (mean > 0))) stop("mean must be in (0, 1)")
+    if (var >= mean * (1 - mean)) stop("var must be < mean * (1 - mu)")
+    a <- ((1 - mean) / var - 1 / mean) * mean ^ 2
+    b <- a * (1 / mean - 1)
     fx <- list(a = a, b = b)
     fx
 }
@@ -42,9 +42,9 @@ computeBetaParms <- function(mu, var) {
 #' @export
 computeBetaMoments <- function(a, b) {
     if (!(a > 0 & b > 0)) stop("a and b must be greater than 0")
-    mean <- a / (a + b)
-    var <- a * b / (((a + b)^2) * (a + b + 1))
-    fx <- list(mean = mean, variance = var)
+    m_ <- a / (a + b)
+    v_ <- a * b / (((a + b)^2) * (a + b + 1))
+    fx <- list(mean = m_, variance = v_)
     fx
 }
 

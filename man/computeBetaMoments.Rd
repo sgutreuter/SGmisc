@@ -5,7 +5,7 @@
 \title{Compute the mean and variance of the Beta distribution from the shape
 parameters}
 \usage{
-computeBetaMoments(a = 1, b = 2)
+computeBetaMoments(a, b)
 }
 \arguments{
 \item{a}{Beta distribution shape1 parameter}
