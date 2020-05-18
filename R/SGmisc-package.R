@@ -23,6 +23,8 @@
 #' \item{\code{\link{logit}}}{Compute the logit transformation of a vector of
 #' elements in (0, 1)}
 #' \item{\code{\link{mid_date}}}{Find the midpoint date between two dates}
+#' \item{\code{\link{nuke_packages}}}{Detach all packages other than those
+#' attached by base R}
 #' \item{\code{\link{Oz_incidencer}}}{Compute HIV incidence rate using
 #' "Osmond's" method}
 #' \item{\code{\link{rand_date}}}{Compute a random uniformly distributed date
