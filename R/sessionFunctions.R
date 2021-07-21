@@ -15,6 +15,7 @@
 #' This function is used for its side effects and returns nothing.  Do no harm
 #' to others; call this function only within your own interactive session.
 #' Some namespaces may not be unloaded.
+#' @importFrom utils sessionInfo
 #' @export
 nuke_packages <- function(){
     invisible(lapply(paste0('package:', names(sessionInfo()$otherPkgs)),

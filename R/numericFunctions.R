@@ -333,7 +333,7 @@ sampsize_multinomial <- function(m, relmoe, conf = 0.95) {
 #' @references
 #' \url{https://en.wikipedia.org/wiki/Smooth_maximum}
 #' @export
-smooth_extreme <- function(x, type = NULL, alpha = 4) {
+smooth_extremum <- function(x, type = NULL, alpha = 4) {
     stopifnot(is.numeric(x))
     stopifnot(alpha > 0)
     if(!type %in% c("min", "max")) stop("Argument type must be 'min' or 'max'.")
