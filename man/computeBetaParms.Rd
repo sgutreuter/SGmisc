@@ -5,10 +5,10 @@
 \title{Compute the shape parameters of the Beta distribution from the mean and
 variance}
 \usage{
-computeBetaParms(mean, var)
+computeBetaParms(mu, var)
 }
 \arguments{
-\item{mean}{Mean of the Beta distribution}
+\item{mu}{Mean of the Beta distribution}
 
 \item{var}{Variance of the Beta distribution}
 }

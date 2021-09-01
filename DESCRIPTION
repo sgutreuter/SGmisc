@@ -1,13 +1,13 @@
 Package: SGmisc
 Title: Miscellaneous R Convenience Functions
-Version: 0.6.5
-Date: 2021-07-21
+Version: 0.6.3
+Date: 2021-09-01
 Authors@R:
     person(given = "Steve",
            family = "Gutreuter",
            role = c("aut", "cre"),
            email = "sgutreuter@gmail.com")
-Depends: dplyr, lubridate, magrittr, boot, utils
+Depends: dplyr, lubridate, magrittr, boot
 Description: Miscellaneous R convenience functions and wrappers.
 License: GPL (>= 2)
 URL: https://github.com/sgutreuter/SGmisc.git

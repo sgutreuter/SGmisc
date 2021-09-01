@@ -16,6 +16,8 @@
 #' for each column of a dataframe}
 #' \item{\code{\link{empCDF}}}{Compute the empirical cumulative distribution
 #' function for a discrete random vector}
+#' \item{\code{\link{fp_table}}}{Create one- and two-way tables of frequencies and
+#' percentages}
 #' \item{\code{\link{icc2deff}}}{Compute the conventional survey design effect
 #' from the intraclass correlation}
 #' \item{\code{\link{ilogit}}}{Compute the inverse of the logit transformation
@@ -23,8 +25,6 @@
 #' \item{\code{\link{logit}}}{Compute the logit transformation of a vector of
 #' elements in (0, 1)}
 #' \item{\code{\link{mid_date}}}{Find the midpoint date between two dates}
-#' \item{\code{\link{nuke_packages}}}{Detach all packages other than those
-#' attached by base R}
 #' \item{\code{\link{Oz_incidencer}}}{Compute HIV incidence rate using
 #' "Osmond's" method}
 #' \item{\code{\link{rand_date}}}{Compute a random uniformly distributed date
@@ -34,7 +34,7 @@
 #' a Demographic and Health Survey}
 #' \item{\code{\link{sampsize_multinomial}}}{Compute the approximate worst-case
 #' sample-size for a vector of multinomially distributed proportions}
-#' \item{\code{\link{smooth_extremum}}}{Compute a smooth differentiable
-#' approximation to the minimum or maximum of a numeric vector}
+#' \item{\code{\link{smooth_extremum}}}{Compute a smooth differentiable approximation
+#' to the minimum or maximum of a numeric vector}
 #'}
 NULL
