@@ -71,7 +71,8 @@ count_NA <- function(.data) {
 #' @return A dataframe containing frequencies and percentages. The columns
 #' contain frequecies and row percentages.  A two-way summary is produced if
 #' rowvar is specified.  Rows and columns can be reversed by specifying
-#' \code{transpose = TRUE}.
+#' \code{transpose = TRUE}. The result is uglier than a hairless cat, but can
+#' easily be converted to useful tabular formats with some custom recoding.
 #'
 #' @author Steve Gutreuter
 #'

@@ -16,7 +16,7 @@
 #' for each column of a dataframe}
 #' \item{\code{\link{empCDF}}}{Compute the empirical cumulative distribution
 #' function for a discrete random vector}
-#' \item{\code{link{fp_table}}}{Create one- and two-way tables of frequencies and
+#' \item{\code{\link{fp_table}}}{Create one- and two-way tables of frequencies and
 #' percentages}
 #' \item{\code{\link{icc2deff}}}{Compute the conventional survey design effect
 #' from the intraclass correlation}
@@ -34,5 +34,7 @@
 #' a Demographic and Health Survey}
 #' \item{\code{\link{sampsize_multinomial}}}{Compute the approximate worst-case
 #' sample-size for a vector of multinomially distributed proportions}
+#' \item{\code{\link{smooth_extremum}}}{Compute a smooth differentiable approximation
+#' to the minimum or maximum of a numeric vector}
 #'}
 NULL

@@ -319,4 +319,26 @@ sampsize_multinomial <- function(m, relmoe, conf = 0.95) {
          Call = match.call())
 }
 
+
+#' Compute a smooth differentiable approximation to the minimum or maximum of a
+#' numeric vector
+#'
+#' @param x A numeric vector.
+#' @param type Character \code{"min"} or \code{"max"} specifying the type of
+#' extremum desired.
+#' @param alpha A numeric smoothing parameter (\code{alpha} > 0).
+#'
+#' @return An approximation to the minimum or maximum of \code{x}.
+#'
+#' @references
+#' \url{https://en.wikipedia.org/wiki/Smooth_maximum}
+#' @export
+smooth_extremum <- function(x, type = NULL, alpha = 4) {
+    stopifnot(is.numeric(x))
+    stopifnot(alpha > 0)
+    if(!type %in% c("min", "max")) stop("Argument type must be 'min' or 'max'.")
+    s <- ifelse(type == "min", -1, 1)
+    res <- sum(x * exp(s * alpha * x)) / sum(exp(s * alpha * x))
+    res
+}
 ################################   END of FILE   ###############################
