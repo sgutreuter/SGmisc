@@ -1,0 +1,33 @@
+computeBetaMoments      Compute the mean and variance of the Beta
+                        distribution from the shape parameters
+computeBetaParms        Compute the shape parameters of the Beta
+                        distribution from the mean and variance
+count_NA                Count the numbers of NA, NaN and Inf in each
+                        column of a dataframe
+empCDF                  Compute the discrete empirical cumulative
+                        distribution of a real vector
+fp_table                One and two-way summaries of frequencies,
+                        percentages and totals.
+icc2deff                Compute the conventional design effect (Deff)
+                        from the intraclass correlation
+ilogit                  Inverse logit (expit) tranformation of a
+                        numeric vector
+logit                   Logit transformation of a real vector
+mid_date                Compute the midpoint between two dates
+nuke_packages           Detach all packages other than those attached
+                        by base R
+Oz_incidencer           Estimate HIV incidence rate using "Osmond's"
+                        method
+rand_date               Compute uniformly distributed random dates
+                        within intervals of dates
+recode_if               Recode a variable conditional on one or more
+                        other variables
+sampsize_DHS            Compute the stratum-specific cluster/household
+                        sample size for proportions from binomial
+                        counts estimated from a Demographic and Health
+                        Survey
+sampsize_multinomial    Compute the approximate worst-case sample size
+                        for a vector of multinomial proportions
+SGmisc                  SGmisc
+smooth_extremum         Compute a smooth differentiable approximation
+                        to the minimum or maximum of a numeric vector

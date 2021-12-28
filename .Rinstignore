@@ -3,6 +3,9 @@
 ^issues$
 ^\\.git$
 ^\\.gitignore$
-^HOWTO_install_SGmisc$
 ^README\\.md$
+^README\\.Rmd$
+^auto
 build_it
+^SGmisc_0.6.4.pdf
+/maintenance/
