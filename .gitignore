@@ -3,7 +3,10 @@
 *.log
 *.Rout
 .#*
+^.#*
 tmp*
+^auto
+/maintenance/
 obsolete
 genData.R
 testing.R
