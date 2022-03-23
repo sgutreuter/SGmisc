@@ -341,4 +341,34 @@ smooth_extremum <- function(x, type = NULL, alpha = 4) {
     res <- sum(x * exp(s * alpha * x)) / sum(exp(s * alpha * x))
     res
 }
+
+
+#' Compute the anti-transpose of a square matrix or table
+#'
+#' @description The anti-transpose of a square matrix or table \code{x} is the
+#' transpose taken across the off-diagonal.  \code{anti-t} is a convenience
+#' wrapper for \code{apply(apply(x, 2, rev), 1, rev)}.
+#'
+#' The anti-transpose function is useful, for example, for converting the
+#' results of \code{table(Test, Gold)} to a "confusion" matrix, and vice-versa.
+#'
+#' A C implementation of the anti-transpose function can also be found as in
+#' package \code{gclm} as \code{gclm:::anti_t}.
+#'
+#' @param x A square matrix or table.
+#'
+#' @return The anti-transpose (transpose across the off-diagonal) of \code{x}.
+#'
+#' @examples
+#' Gold <- rbinom(20, 1, 0.50)
+#' Test <- Gold; Test[c(3, 5, 9, 12, 16)] <- 1 - Test[c(3, 9, 5, 12, 16)]
+#' (tb <- table(Test, Gold))
+#' anti_t(tb)
+#' @export
+anti_t <- function(x){
+    if(!is.matrix(x) & dim(x)[1] !=  dim(x)[2])
+        stop("x must be a square matrix or table")
+    result <- apply(apply(x, 2, rev), 1, rev )
+    result
+    }
 ################################   END of FILE   ###############################

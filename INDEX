@@ -1,3 +1,5 @@
+anti_t                  Compute the anti-transpose of a square matrix
+                        or table
 computeBetaMoments      Compute the mean and variance of the Beta
                         distribution from the shape parameters
 computeBetaParms        Compute the shape parameters of the Beta
