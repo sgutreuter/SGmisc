@@ -75,6 +75,9 @@ empCDF <- function(x, knots = 10) {
 #'
 #' @return The design effect (Deff)
 #'
+#' @references
+#' Kish L. Survey Sampling. John Wiley & Sons, New York. 1965.
+#'
 #' @author Steve Gutreuter
 #' @export
 icc2deff <- function(icc, N) {
