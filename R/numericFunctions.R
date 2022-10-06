@@ -9,6 +9,110 @@
 ##               E-mail:  sgutreuter@gmail.com
 ################################################################################
 
+#' Estimate Probability of Mortality Among Key Population Members
+#'
+#' @description
+#' \code{BBS_mortality} computes estimates of the probability of
+#' death over some time interval (determined by the survey questions) among
+#' members of key populations using information about contacts collected as part
+#' of Bio-Behavioral Surveillance Surveys. Estimation includes bootstrap
+#' confidence intervals.
+#'
+#' @param .data a dataframe containing the four variables.
+#'
+#' @param n_know a character string naming the variable containing the number
+#' of contacts known by the subject and who know the subject within the past
+#' time interval.
+#'
+#' @param n_lost a character string naming the variable containing the subset
+#' of \code{n_know} for whom the subject lost contact during the past time
+#' interval.
+#'
+#' @param n_died a character string naming the variable containing the subset
+#' of \code{n_know} who were known by the subject to have died, by any cause,
+#' during the past time interval.
+#'
+#' @param degree a character string naming the variable containing the network
+#' degree of the subject.
+#'
+#' @param recall_max the maximum contact count that is deemed plausible.
+#' Default: 100.
+#'
+#' @param R an integer-valued count of the number of bootstrap replicates
+#' desired for estimation of confidence limits. Default: 2000.
+#'
+#' @param conf the desired confidence level. Default: 0.95.
+#'
+#' @param ci_type a character string naming the type of bootstrap confidence
+#' interval desired; one of \verb{'bca'} (default), \verb{'perc'} or
+#' \verb{'basic'}.  See \code{\link[boot]{boot.ci}}.
+#'
+#' @details
+#' \code{BBS_mortality} eliminates records for which
+#' \code{n_know} < \code{n_lost} + \code{n_died} and any observations containing
+#' missing values for those variables are also removed.
+#'
+#' @return
+#' A dataframe containing the following variables:
+#' \describe{
+#' \item{\code{estimate}}{The estimated probability of mortality}
+#' \item{\code{SE}}{The standard error of the estimate}
+#' \item{\code{lower}}{The lower confidence limit}
+#' \item{\code{upper}}{The upper confidence limit}
+#' \item{\code{conf_level}}{The confidence level}
+#' \item{\code{type}}{The type of bootstrap confidence interval}
+#' }
+#' @author Ian Fellows and Steve Gutreuter
+#' @importFrom stats var
+BBS_mortality <- function(.data, n_know = NULL, n_lost = NULL, n_died = NULL,
+                     degree = NULL, recall_max =  100, R =  2000L, conf = 0.95,
+                     ci_type = c("bca", "perc", "basic")) {
+    citype <- match.arg(ci_type)
+    d_ <- data.frame(n_know = .data[[n_know]],
+                     n_lost = .data[[n_lost]],
+                     n_died = .data[[n_died]],
+                     degree = .data[[degree]])
+    for(cx in c("n_know", "n_lost", "n_died", "degree")) {
+        if(!is.numeric(d_[[cx]])) stop(paste0(cx, " must be numeric"))
+    }
+    d_ <- d_[!(is.na(d_$n_know) | is.na(d_$n_lost) | is.na(d_$n_died)),]
+    tst <- d_$n_know < (d_$n_died + d_$n_lost)
+    if(any(tst))
+        warning(paste0(sum(tst),
+                       " observation(s) deleted; n_died  >  n_know + n_lost"))
+    d_$n_know <- ifelse(d_$n_know > recall_max, NA, d_$n_know)
+    d_$n_lost <- ifelse(d_$n_lost > recall_max, NA, d_$n_lost)
+    d_$n_died <- ifelse(d_$n_died > recall_max, NA, d_$n_died)
+    d_ <- d_[!tst,]
+    f_Est <- function(d, indices) {
+        d <- d[indices,]
+        w <- d$degree
+        sw <- sum(w)
+        mk <- sum(d$n_know * w) / sw
+        ml <- sum(d$n_lost * w) / sw
+        md <- sum(d$n_died * w) / sw
+        p_lost <- ml / mk
+        p_died <- md / mk
+        l1 <- log(1 - p_died - p_lost) / (-1 - p_died / p_lost)
+        l2 <- p_died * l1 / p_lost
+        return(1 - exp(-l2))
+    }
+    bootObj <- boot::boot(d_, statistic = f_Est, R = R)
+    se_ <- sqrt(var(bootObj$t))
+    bootCI <- boot::boot.ci(bootObj, type = citype)
+    res <- data.frame(NULL)
+    for (i in citype) {
+        civec <- bootCI[[citype]]
+        res <- rbind(res, data.frame(estimate = bootCI$t0,
+                                     SE = se_,
+                                     lower = civec[4],
+                                     upper = civec[5],
+                                     conf_level = civec[1],
+                                     type = citype))
+    }
+    res
+}
+
 
 #' Compute the shape parameters of the Beta distribution from the mean and
 #' variance
@@ -74,6 +178,9 @@ empCDF <- function(x, knots = 10) {
 #' @param N The average number of elements per class/cluster
 #'
 #' @return The design effect (Deff)
+#'
+#' @references
+#' Kish L. Survey Sampling. John Wiley & Sons, New York. 1965.
 #'
 #' @author Steve Gutreuter
 #' @export

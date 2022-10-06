@@ -17,6 +17,9 @@ The design effect (Deff)
 \description{
 Compute the conventional design effect (Deff) from the intraclass correlation
 }
+\references{
+Kish L. Survey Sampling. John Wiley & Sons, New York. 1965.
+}
 \author{
 Steve Gutreuter
 }
