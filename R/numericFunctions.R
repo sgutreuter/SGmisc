@@ -61,17 +61,18 @@
 #' \item{\code{upper}}{The upper confidence limit}
 #' \item{\code{conf_level}}{The confidence level}
 #' \item{\code{type}}{The type of bootstrap confidence interval}
+#' }
 #' @author Ian Fellows and Steve Gutreuter
-#'}
+#' @importFrom stats var
 BBS_mortality <- function(.data, n_know = NULL, n_lost = NULL, n_died = NULL,
-                     n_degree = NULL, recall_max =  100, R =  2000L, conf = 0.95,
+                     degree = NULL, recall_max =  100, R =  2000L, conf = 0.95,
                      ci_type = c("bca", "perc", "basic")) {
     citype <- match.arg(ci_type)
     d_ <- data.frame(n_know = .data[[n_know]],
                      n_lost = .data[[n_lost]],
                      n_died = .data[[n_died]],
-                     n_degree = .data[[n_degree]])
-    for(cx in c("n_know", "n_lost", "n_died", "n_degree")) {
+                     degree = .data[[degree]])
+    for(cx in c("n_know", "n_lost", "n_died", "degree")) {
         if(!is.numeric(d_[[cx]])) stop(paste0(cx, " must be numeric"))
     }
     d_ <- d_[!(is.na(d_$n_know) | is.na(d_$n_lost) | is.na(d_$n_died)),]
@@ -85,7 +86,7 @@ BBS_mortality <- function(.data, n_know = NULL, n_lost = NULL, n_died = NULL,
     d_ <- d_[!tst,]
     f_Est <- function(d, indices) {
         d <- d[indices,]
-        w <- d$n_degree
+        w <- d$degree
         sw <- sum(w)
         mk <- sum(d$n_know * w) / sw
         ml <- sum(d$n_lost * w) / sw
