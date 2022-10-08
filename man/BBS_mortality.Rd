@@ -49,7 +49,7 @@ interval desired; one of \verb{'bca'} (default), \verb{'perc'} or
 \value{
 A dataframe containing the following variables:
 \describe{
-\item{\code{estimate}}{The estimated probability of mortality}
+\item{\code{Pr_death}}{The estimated probability of mortality}
 \item{\code{SE}}{The standard error of the estimate}
 \item{\code{lower}}{The lower confidence limit}
 \item{\code{upper}}{The upper confidence limit}

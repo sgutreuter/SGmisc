@@ -8,6 +8,8 @@
 #' @seealso
 #' The exported functions in the \code{SGmisc} package are:
 #' \describe{
+#' \item{\code{link{BBS_mortality}}}{Estimate probability of mortality
+#' among key population members from bio-behavioral surveillance surveys}
 #' \item{\code{\link{computeBetaMoments}}}{Compute the mean oand variance of the
 #' Beta distribution}
 #' \item{\code{\link{computeBetaParms}}}{Compute the shape parameters of the
