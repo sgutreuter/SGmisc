@@ -64,6 +64,7 @@
 #' }
 #' @author Ian Fellows and Steve Gutreuter
 #' @importFrom stats var
+#' @export
 BBS_mortality <- function(.data, n_know = NULL, n_lost = NULL, n_died = NULL,
                      degree = NULL, recall_max =  100, R =  2000L, conf = 0.95,
                      ci_type = c("bca", "perc", "basic")) {
