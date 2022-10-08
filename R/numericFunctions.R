@@ -55,7 +55,7 @@
 #' @return
 #' A dataframe containing the following variables:
 #' \describe{
-#' \item{\code{estimate}}{The estimated probability of mortality}
+#' \item{\code{Pr_death}}{The estimated probability of mortality}
 #' \item{\code{SE}}{The standard error of the estimate}
 #' \item{\code{lower}}{The lower confidence limit}
 #' \item{\code{upper}}{The upper confidence limit}
@@ -103,7 +103,7 @@ BBS_mortality <- function(.data, n_know = NULL, n_lost = NULL, n_died = NULL,
     res <- data.frame(NULL)
     for (i in citype) {
         civec <- bootCI[[citype]]
-        res <- rbind(res, data.frame(estimate = bootCI$t0,
+        res <- rbind(res, data.frame(Pr_death = bootCI$t0,
                                      SE = se_,
                                      lower = civec[4],
                                      upper = civec[5],
