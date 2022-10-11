@@ -70,9 +70,9 @@ BBS_mortality <- function(.data, n_know = NULL, n_lost = NULL, n_died = NULL,
                      ci_type = c("bca", "perc", "basic")) {
     citype <- match.arg(ci_type)
     d_ <- data.frame(n_know = .data[[n_know]],
-                     n_lost = .data[[n_lost]],
-                     n_died = .data[[n_died]],
-                     degree = .data[[degree]])
+                    n_lost = .data[[n_lost]],
+                    n_died = .data[[n_died]],
+                    degree = .data[[degree]])
     for(cx in c("n_know", "n_lost", "n_died", "degree")) {
         if(!is.numeric(d_[[cx]])) stop(paste0(cx, " must be numeric"))
     }
@@ -101,19 +101,13 @@ BBS_mortality <- function(.data, n_know = NULL, n_lost = NULL, n_died = NULL,
     bootObj <- boot::boot(d_, statistic = f_Est, R = R)
     se_ <- sqrt(var(bootObj$t))
     bootCI <- boot::boot.ci(bootObj, type = citype)
-    res <- data.frame(NULL)
-    for (i in citype) {
-        civec <- bootCI[[citype]]
-        res <- rbind(res, data.frame(Pr_death = bootCI$t0,
-                                     SE = se_,
-                                     lower = civec[4],
-                                     upper = civec[5],
-                                     conf_level = civec[1],
-                                     type = citype))
-    }
-    res
+    return(data.frame(Pr_death= bootCI$t0,
+                      SE = se_,
+                      lower = bootCI[[4]][4],
+                      upper = bootCI[[4]][5],
+                      conf_level = bootCI[[4]][1],
+                      type = citype))
 }
-
 
 #' Compute the shape parameters of the Beta distribution from the mean and
 #' variance
