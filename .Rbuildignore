@@ -5,9 +5,13 @@
 ^\\.gitignore$
 ^README\\.md$
 ^README\\.Rmd$
+^README\\.html$
 build_it
 ^auto
 ^LICENSE\.md$
 ^SGmisc_0.6.4.pdf
 ^SGmisc_0.6.5.pdf
+^SGmisc_0.6.6.pdf
+^SGmisc_0.6.7.pdf
 /maintenance/
+maintenance/

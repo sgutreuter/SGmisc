@@ -16,7 +16,8 @@ icc2deff                Compute the conventional design effect (Deff)
                         from the intraclass correlation
 ilogit                  Inverse logit (expit) tranformation of a
                         numeric vector
-logit                   Logit transformation of a real vector
+logit                   Compute an extended logit transformation of a
+                        real vector
 mid_date                Compute the midpoint between two dates
 nuke_packages           Detach all packages other than those attached
                         by base R

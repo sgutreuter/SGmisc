@@ -206,23 +206,39 @@ ilogit <- function(x) {
 expit <- ilogit
 
 
-#' Logit transformation of a real vector
+#' Compute an extended logit transformation of a real vector
 #'
-#' @param x A real-valued vector with elements in [0,1]
+#' @param x A real-valued vector with elements in [0,1].
 #'
-#' @return A numeric vector containing logit(x)
+#' @param repl.inf (Logical) Replace -Inf and Inf values with finite
+#' approximations (Default: FALSE).
+#'
+#' @param bound Absolute value of the finite approximation to -Inf and Inf
+#' (Default: 1e-12).
+#'
+#' @return A numeric vector containing logit(x). See Details.
+#'
+#' @details
+#' In contrast to the conventional logit function which has support on (0,1),
+#' this version has support on [0,1], where /code{logit(0)} = \verb{-Inf} and
+#' /code{logit(1)} = \verb{Inf}. For sloppy computational convenience when, for
+#' example, averaging logits, the infinte values can be replaced with finite
+#' approximations.
 #'
 #' @author Steve Gutreuter
 #'
-#' @seealso \code{\link[boot]{logit}} from the \code{boot} package for a C++
-#' alternative.
+#' @seealso \code{\link[boot]{logit}} from the \code{boot} package for a
+#' conventional C++ alternative.
 #' @export
-logit <- function(x) {
+logit <- function(x, repl.inf = FALSE, bound = 1e12) {
     stopifnot(x >= 0 & x <= 1)
-    fx <- (log(x / (1 - x)))
-    fx
+    fx_ <- log(x / (1 - x))
+    if(repl.inf == TRUE) {
+        fx_[fx_ == -Inf] <- -bound
+        fx_[fx_ == Inf] <- bound
+    }
+    fx_
 }
-
 
 #' Estimate HIV incidence rate using "Osmond's" method
 #'
