@@ -150,7 +150,6 @@ binom_expansion  <- function(x, y, n) {
 }
 
 
-#'
 #' Compute the shape parameters of the Beta distribution from the mean and
 #' variance
 #'
