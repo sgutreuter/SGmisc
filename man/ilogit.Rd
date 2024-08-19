@@ -10,7 +10,7 @@ ilogit(x)
 expit(x)
 }
 \arguments{
-\item{x}{A numeric vector}
+\item{x}{A numeric real-valued vector}
 }
 \value{
 A numeric vector of the inverse logits of x.

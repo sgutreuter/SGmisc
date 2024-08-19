@@ -2,10 +2,18 @@ anti_t                  Compute the anti-transpose of a square matrix
                         or table
 BBS_mortality           Estimate Probability of Mortality Among Key
                         Population Members
+binom_coef              Compute the binomial coefficient \binom{n}{k}
+binom_expansion         Compute the binomial expansion (x + y)^n
 computeBetaMoments      Compute the mean and variance of the Beta
                         distribution from the shape parameters
 computeBetaParms        Compute the shape parameters of the Beta
                         distribution from the mean and variance
+computeGammaMoments     Compute the mean and variance of the Gamma
+                        distribution from the shape and rate or scale
+                        parameters
+computeGammaParms       Compute the mean and variance of the Gamma
+                        distribution from the shape and rate or scale
+                        parameters
 count_NA                Count the numbers of NA, NaN and Inf in each
                         column of a dataframe
 empCDF                  Compute the discrete empirical cumulative

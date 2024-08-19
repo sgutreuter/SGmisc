@@ -2,6 +2,7 @@
 % Please edit documentation in R/SGmisc-package.R
 \docType{package}
 \name{SGmisc}
+\alias{SGmisc-package}
 \alias{SGmisc}
 \title{SGmisc}
 \description{
@@ -16,6 +17,10 @@ among key population members from bio-behavioral surveillance surveys}
 Beta distribution}
 \item{\code{\link{computeBetaParms}}}{Compute the shape parameters of the
 Beta distribution}
+\item{\code{\link{computeGammaMoments}}}{Compute the mean oand variance of the
+Gamma distribution}
+\item{\code{\link{computeGammaParms}}}{Compute the shape, rate and scale
+parameters of the Gamma distribution}
 \item{\code{\link{count_NA}}}{Get a count of the numbers of NA, NaN and Inf
 for each column of a dataframe}
 \item{\code{\link{empCDF}}}{Compute the empirical cumulative distribution

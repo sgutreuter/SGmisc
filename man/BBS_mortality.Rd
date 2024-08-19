@@ -70,5 +70,5 @@ confidence intervals.
 missing values for those variables are also removed.
 }
 \author{
-Ian Fellows and Steve Gutreuter
+Ian Fellows and Steve Gutreuter.  Algorithm by Ian Fellows.
 }

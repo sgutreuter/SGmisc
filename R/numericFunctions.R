@@ -62,7 +62,7 @@
 #' \item{\code{conf_level}}{The confidence level}
 #' \item{\code{type}}{The type of bootstrap confidence interval}
 #' }
-#' @author Ian Fellows and Steve Gutreuter
+#' @author Ian Fellows and Steve Gutreuter.  Algorithm by Ian Fellows.
 #' @importFrom stats var
 #' @export
 BBS_mortality <- function(.data, n_know = NULL, n_lost = NULL, n_died = NULL,
@@ -109,6 +109,48 @@ BBS_mortality <- function(.data, n_know = NULL, n_lost = NULL, n_died = NULL,
                       type = citype))
 }
 
+#' Compute the binomial coefficient \eqn{\binom{n}{k}}
+#'
+#' @param n a non-negative number
+#'
+#' @param k another non-negative number such that \eqn{k \le n}
+#'
+#' @return Numeric value of the binomial coefficient \eqn{\binom{n}{k} = \frac{n!}{k!(n - k)!}}
+#'
+#' #'
+#' @author Steve Gutreuter
+#' @export
+binom_coef <- function(n, k) {
+    if(!n >= 0) stop("n cannot be negative")
+    if(!(n >= k & k >=  0)) stop("n >= k >= 0 does not hold")
+    exp(lgamma(n + 1) - (lgamma(k + 1) + lgamma(n - k + 1)))
+}
+
+#' Compute the binomial expansion \eqn{(x + y)^n}
+#'
+#' @param x A real number
+#'
+#' @param y A real number
+#'
+#' @param n integer-valued exponent
+#'
+#' @return The numeric value of \{eqn(x + y)^n}
+#'
+#' @author Steve Gutreuter
+#'
+#' @importFrom utils combn
+#' @export
+binom_expansion  <- function(x, y, n) {
+    if(!floor(n) == n) stop("n cannot be coerced to an integer")
+    sum_  <- 0
+    for (i in 0:n) {
+        sum_ <- sum_ + utils::combn(n, i) * x^i * (y^(n - 1))
+    }
+    sum_
+}
+
+
+#'
 #' Compute the shape parameters of the Beta distribution from the mean and
 #' variance
 #'
@@ -166,6 +208,52 @@ empCDF <- function(x, knots = 10) {
     fx
 }
 
+#' Compute the mean and variance of the Gamma distribution from the
+#' shape and rate or scale parameters
+#'
+#' @param mu Gamma distribution mean
+#' @param var Gamma distribution variance
+#'
+#' @return A list containing the shape, rate and scale parameters of
+#' Gamma distribution
+#'
+#' @author Steve Gutreuter
+#' @export
+computeGammaParms <- function(mu, var) {
+    if (!(mu > 0)) stop("mu must be greater than 0")
+    if (!(var > 0)) stop("var must be greater than 0")
+    a <- mu^2 / var
+    b <- mu / var
+    list(shape = a, rate = b, scale =  1 / b)
+}
+
+#' Compute the mean and variance of the Gamma distribution from the
+#' shape and rate or scale parameters
+#'
+#' @param shape Gamma distribution shape parameter
+#' @param rate Gamma distribution rate parameter
+#' @param scale Gamma distribution scale = 1 / rate
+#'
+#' @return A list containing the mean and variance of the Gamma
+#' distribution
+#'
+#' @author Steve Gutreuter
+#' @export
+computeGammaMoments <- function(shape, rate = 1, scale = 1 / rate) {
+    if (!missing(rate) && !missing(scale)) {
+        if (abs(rate * scale - 1) < 1e-15)
+            warning("specify 'rate' or 'scale' but not both")
+        else stop("specify 'rate' or 'scale' but not both")
+    }
+    if (missing(rate)) rate <- 1 / scale
+    if (!(shape > 0)) stop("shape must be greater than 0")
+    if (!(rate > 0)) stop("rate must be greater than 0")
+
+    mu <- shape / rate
+    var <- shape / rate^2
+    list(mean = mu, variance = var)
+}
+
 
 #' Compute the conventional design effect (Deff) from the intraclass correlation
 #'
@@ -189,7 +277,7 @@ icc2deff <- function(icc, N) {
 
 #' Inverse logit (expit) tranformation of a numeric vector
 #'
-#' @param x A numeric vector
+#' @param x A numeric real-valued vector
 #'
 #' @return A numeric vector of the inverse logits of x.
 #'
