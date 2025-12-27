@@ -7,8 +7,10 @@
 tmp*
 ^auto
 /maintenance/
+/build_it/
 obsolete
 genData.R
 testing.R
 sandbox.R
+.DS_Store
 .Rdata

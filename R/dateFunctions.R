@@ -98,4 +98,29 @@ rand_date <- function(startdate, enddate, ...) {
     }
     res
 }
+
+
+#' Report starting, ending and elapsed times of execution of code
+#'
+#' @param start A datetime value containing the starting time (Default
+#' t0_)
+#' @param enddate A vector of class \code{Date} containing the ending date(s)
+#'
+#' @return Print to console the starting, ending and elapsed times
+#'
+#' @author Steve Gutreuter
+#'
+#' @examples
+#' t0_ <- Sys.time()
+#' Sys.sleep(10)
+#' timer()
+#' @export
+timer <- function(start = t0_) {
+    t1_ <- Sys.time()
+    elapsed <- t1_ - t0_
+    cat(" Start time:   ", format(start, "%Y-%m-%d %H:%M:%S %Z"), "\n",
+        "Finish time:  ", format(t1_, "%Y-%m-%d %H:%M:%S %Z"), "\n",
+        "Elapsed time: ", round(elapsed, digits = 2),
+        attr(elapsed, which = "units"), "\n")
+}
 ################################   END of FILE   ###############################
